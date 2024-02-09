@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../config");
+const config = require("../config");
+const JWT_SECRET = config.JWT_SECRET;
 
 function authMiddleware(req, res, next){
     const authorization = req.headers.authorization;

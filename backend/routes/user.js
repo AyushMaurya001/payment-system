@@ -2,7 +2,8 @@ const express = require("express");
 const userRouter = express.Router();
 const zod = require("zod");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../config");
+const config = require("../config");
+const JWT_SECRET = config.JWT_SECRET;
 const { User, Account } = require("../database/db");
 const { default: mongoose } = require("mongoose");
 const { authMiddleware } = require("../middleware/middleware");
@@ -80,6 +81,7 @@ userRouter.post("/signin", async (req, res)=>{
     const token = jwt.sign({
         userId: existingUser._id
     }, JWT_SECRET);
+    console.log(token);
     return res.json({
         msg: "Signin successful",
         token: token

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect(connectionString);
+const config = require("../config");
+mongoose.connect(config.connectionString);
 
 const userSchema = new mongoose.Schema({
     email: {
